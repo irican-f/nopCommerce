@@ -171,7 +171,6 @@ glob:*.user
 *.patch
 *.hg
 src/Presentation/Nop.Web/.config/*
-src/Presentation/Nop.Web/App_Data
 src/Presentation/Nop.Web/App_Data/browscap.xml
 src/Presentation/Nop.Web/App_Data/installedPlugins.json
 src/Presentation/Nop.Web/App_Data/plugins.json
@@ -203,6 +202,5 @@ src/Presentation/Nop.Web/wwwroot/lib_npm/cldr-data/main/*
 !src/Presentation/Nop.Web/wwwroot/lib_npm/cldr-data/main/main.zip
 src/Presentation/Nop.Web/wwwroot/sitemaps/*
 !src/Presentation/Nop.Web/wwwroot/sitemaps/Index.htm
-src/Presentation/Nop.Web/wwwroot/lib_npm
 src/packages/*
 src/Tests/Nop.Tests/Connections.resx
