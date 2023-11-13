@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Misc",
+  "FriendlyName": "REST Api plugin",
+  "SystemName": "Misc.ApiRest",
+  "Version": "4.6.0",
+  "SupportedVersions": [ "4.60" ],
+  "Author": "Filip Iricanin",
+  "DisplayOrder": -1,
+  "FileName": "Nop.Plugin.Misc.ApiRest.dll",
+  "Description": "This plugin is Restful API for nopCommerce"
+}
