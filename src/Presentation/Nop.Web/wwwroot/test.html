@@ -1,0 +1,26 @@
+﻿<html>
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<script src="/dist/runtime.bundle.js"></script>
+<script src="/dist/vendor.bundle.js"></script>
+<script src="/dist/app.bundle.js"></script>
+
+<div class="React"></div>
+<div class="ReactDOM"></div>
+<div class="ReactDOMServer"></div>
+
+<script type="text/javascript">
+    function checkGlobal(name) {
+        let div = document.createElement('div');
+        div.innerText = `${name}: ${typeof window[name]}`;
+        document.body.appendChild(div);
+    }
+
+    checkGlobal('React');
+    checkGlobal('ReactDOM');
+    checkGlobal('ReactDOMServer');
+</script>
+</body>
+</html>

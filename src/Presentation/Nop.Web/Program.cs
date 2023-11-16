@@ -1,10 +1,13 @@
 ﻿using Autofac.Extensions.DependencyInjection;
+using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
+using JavaScriptEngineSwitcher.V8;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Nop.Core.Configuration;
 using Nop.Core.Infrastructure;
 using Nop.Web.Framework.Infrastructure.Extensions;
+using React.AspNet;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +37,13 @@ else
         options.ValidateOnBuild = true;
     });
 
+builder.Services.AddReact();
+builder.Services.AddJsEngineSwitcher(options =>
+    {
+        options.DefaultEngineName = V8JsEngine.EngineName;
+    })
+    .AddV8();
+
 //add services to the application and configure service provider
 builder.Services.ConfigureApplicationServices(builder);
 
@@ -41,6 +51,21 @@ var app = builder.Build();
 
 //configure the application HTTP request pipeline
 app.ConfigureRequestPipeline();
+// app.UseStaticFiles();
+
+app.UseReact(config =>
+{
+    config
+        .SetReuseJavaScriptEngines(true)
+        .SetLoadBabel(false)
+        .SetLoadReact(false)
+        .AddScriptWithoutTransform("~/dist/runtime.bundle.js")
+        .AddScriptWithoutTransform("~/dist/vendor.bundle.js")
+        .AddScriptWithoutTransform("~/dist/deps.bundle.js")
+        .SetReactAppBuildPath("~/dist");
+});
+
+
 app.StartEngine();
 
 app.Run();
